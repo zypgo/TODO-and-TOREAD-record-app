@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![To Do&Read Logo](https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20minimalist%20todo%20and%20reading%20app%20logo%20with%20checkmark%20and%20book%20icons%20clean%20design%20blue%20gradient&image_size=square)
+![To Do&Read Logo](https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6c2fb635-9b6c-487d-ba16-ba61b90e8a2b.png)
 
 **一个现代化、功能丰富的跨平台待办事项和阅读资源管理应用**
 
