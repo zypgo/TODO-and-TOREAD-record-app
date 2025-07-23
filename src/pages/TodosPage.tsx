@@ -97,11 +97,25 @@ const TodosPage = () => {
 
   const toggleFilter = (type: 'status' | 'priority', value: string) => {
     const currentFilter = todoFilter[type] || [];
-    const newFilter = currentFilter.includes(value as any)
-      ? currentFilter.filter(item => item !== value)
-      : [...currentFilter, value as any];
     
-    setTodoFilter({ [type]: newFilter.length > 0 ? newFilter : undefined });
+    // 根据类型进行类型安全的处理
+    if (type === 'status') {
+      const statusValue = value as Todo['status'];
+      const statusFilter = currentFilter as Todo['status'][];
+      const newFilter = statusFilter.includes(statusValue)
+        ? statusFilter.filter(item => item !== statusValue)
+        : [...statusFilter, statusValue];
+      
+      setTodoFilter({ [type]: newFilter.length > 0 ? newFilter : undefined });
+    } else if (type === 'priority') {
+      const priorityValue = value as Todo['priority'];
+      const priorityFilter = currentFilter as Todo['priority'][];
+      const newFilter = priorityFilter.includes(priorityValue)
+        ? priorityFilter.filter(item => item !== priorityValue)
+        : [...priorityFilter, priorityValue];
+      
+      setTodoFilter({ [type]: newFilter.length > 0 ? newFilter : undefined });
+    }
   };
 
   return (

@@ -159,37 +159,37 @@ const AddPage = () => {
       <div className="flex items-center gap-4">
         <button
           onClick={() => navigate(-1)}
-          className="p-2 text-slate-600 hover:text-slate-900 transition-colors"
+          className="glass-button p-2 rounded-xl text-white/90 hover:text-white transition-all duration-300"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">添加新项目</h1>
-          <p className="text-slate-600 mt-1">创建新的待办事项或阅读资源</p>
+          <h1 className="text-3xl font-bold text-white gradient-text">添加新项目</h1>
+          <p className="text-white/80 mt-1">创建新的待办事项或阅读资源</p>
         </div>
       </div>
       
       {/* 类型选择 */}
       {!type && (
-        <div className="bg-white rounded-lg border border-slate-200 p-6">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">选择类型</h2>
+        <div className="glass-card rounded-2xl p-6">
+          <h2 className="text-xl font-bold text-white mb-6 gradient-text">选择类型</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <button
               onClick={() => {
                 setSelectedType('todo');
                 resetForm();
               }}
-              className={`p-6 rounded-lg border-2 transition-all ${
+              className={`glass-button p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
                 selectedType === 'todo'
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-slate-200 hover:border-slate-300 bg-white'
+                  ? 'border-white/50 bg-white/20'
+                  : 'border-white/30 hover:border-white/40'
               }`}
             >
               <CheckSquare className={`w-8 h-8 mx-auto mb-3 ${
-                selectedType === 'todo' ? 'text-blue-600' : 'text-slate-400'
+                selectedType === 'todo' ? 'text-white' : 'text-white/70'
               }`} />
-              <h3 className="font-semibold text-slate-900 mb-1">待办事项</h3>
-              <p className="text-sm text-slate-600">创建需要完成的任务</p>
+              <h3 className="font-semibold text-white mb-1">待办事项</h3>
+              <p className="text-sm text-white/80">创建需要完成的任务</p>
             </button>
             
             <button
@@ -197,31 +197,31 @@ const AddPage = () => {
                 setSelectedType('resource');
                 resetForm();
               }}
-              className={`p-6 rounded-lg border-2 transition-all ${
+              className={`glass-button p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
                 selectedType === 'resource'
-                  ? 'border-purple-500 bg-purple-50'
-                  : 'border-slate-200 hover:border-slate-300 bg-white'
+                  ? 'border-white/50 bg-white/20'
+                  : 'border-white/30 hover:border-white/40'
               }`}
             >
               <BookOpen className={`w-8 h-8 mx-auto mb-3 ${
-                selectedType === 'resource' ? 'text-purple-600' : 'text-slate-400'
+                selectedType === 'resource' ? 'text-white' : 'text-white/70'
               }`} />
-              <h3 className="font-semibold text-slate-900 mb-1">阅读资源</h3>
-              <p className="text-sm text-slate-600">添加文章、书籍或其他资源</p>
+              <h3 className="font-semibold text-white mb-1">阅读资源</h3>
+              <p className="text-sm text-white/80">添加文章、书籍或其他资源</p>
             </button>
           </div>
         </div>
       )}
       
       {/* 表单 */}
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-slate-200 p-6 space-y-6">
+      <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 space-y-6">
         <div className="flex items-center gap-3 mb-6">
           {selectedType === 'todo' ? (
-            <CheckSquare className="w-6 h-6 text-blue-600" />
+            <CheckSquare className="w-6 h-6 text-white" />
           ) : (
-            <BookOpen className="w-6 h-6 text-purple-600" />
+            <BookOpen className="w-6 h-6 text-white" />
           )}
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-xl font-bold text-white gradient-text">
             {selectedType === 'todo' ? '新建待办事项' : '新建阅读资源'}
           </h2>
         </div>
@@ -230,50 +230,50 @@ const AddPage = () => {
           // 待办事项表单
           <>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                标题 <span className="text-red-500">*</span>
+              <label className="block text-sm font-medium text-white/90 mb-2">
+                标题 <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
                 value={todoForm.title}
                 onChange={(e) => setTodoForm(prev => ({ ...prev, title: e.target.value }))}
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                 placeholder="输入待办事项标题"
                 required
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-white/90 mb-2">
                 描述
               </label>
               <textarea
                 value={todoForm.description}
                 onChange={(e) => setTodoForm(prev => ({ ...prev, description: e.target.value }))}
                 rows={3}
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent resize-none"
                 placeholder="详细描述待办事项（可选）"
               />
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-white/90 mb-2">
                   优先级
                 </label>
                 <select
                   value={todoForm.priority}
                   onChange={(e) => setTodoForm(prev => ({ ...prev, priority: e.target.value as Todo['priority'] }))}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 glass-button rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                 >
-                  <option value="low">低</option>
-                  <option value="medium">中</option>
-                  <option value="high">高</option>
+                  <option value="low" className="bg-slate-800 text-white">低</option>
+                  <option value="medium" className="bg-slate-800 text-white">中</option>
+                  <option value="high" className="bg-slate-800 text-white">高</option>
                 </select>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-white/90 mb-2">
                   截止日期
                 </label>
                 <div className="relative">
@@ -281,9 +281,9 @@ const AddPage = () => {
                     type="date"
                     value={todoForm.dueDate}
                     onChange={(e) => setTodoForm(prev => ({ ...prev, dueDate: e.target.value }))}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 glass-button rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                   />
-                  <Calendar className="absolute right-3 top-2.5 w-4 h-4 text-slate-400 pointer-events-none" />
+                  <Calendar className="absolute right-4 top-3.5 w-4 h-4 text-white/60 pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -292,34 +292,34 @@ const AddPage = () => {
           // 阅读资源表单
           <>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                标题 <span className="text-red-500">*</span>
+              <label className="block text-sm font-medium text-white/90 mb-2">
+                标题 <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
                 value={resourceForm.title}
                 onChange={(e) => setResourceForm(prev => ({ ...prev, title: e.target.value }))}
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                 placeholder="输入资源标题"
                 required
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-white/90 mb-2">
                 描述
               </label>
               <textarea
                 value={resourceForm.description}
                 onChange={(e) => setResourceForm(prev => ({ ...prev, description: e.target.value }))}
                 rows={3}
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent resize-none"
                 placeholder="描述资源内容（可选）"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-white/90 mb-2">
                 链接
               </label>
               <div className="relative">
@@ -327,47 +327,47 @@ const AddPage = () => {
                   type="url"
                   value={resourceForm.url}
                   onChange={(e) => setResourceForm(prev => ({ ...prev, url: e.target.value }))}
-                  className="w-full px-3 py-2 pl-10 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 pl-12 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                   placeholder="https://example.com"
                 />
-                <LinkIcon className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+                <LinkIcon className="absolute left-4 top-3.5 w-4 h-4 text-white/60" />
               </div>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-white/90 mb-2">
                   类型
                 </label>
                 <select
                   value={resourceForm.type}
                   onChange={(e) => setResourceForm(prev => ({ ...prev, type: e.target.value as ReadingResource['type'] }))}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 glass-button rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                 >
-                  <option value="article">文章</option>
-                  <option value="book">书籍</option>
-                  <option value="video">视频</option>
-                  <option value="document">文档</option>
-                  <option value="other">其他</option>
+                  <option value="article" className="bg-slate-800 text-white">文章</option>
+                  <option value="book" className="bg-slate-800 text-white">书籍</option>
+                  <option value="video" className="bg-slate-800 text-white">视频</option>
+                  <option value="document" className="bg-slate-800 text-white">文档</option>
+                  <option value="other" className="bg-slate-800 text-white">其他</option>
                 </select>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
-                  分类 <span className="text-red-500">*</span>
+                <label className="block text-sm font-medium text-white/90 mb-2">
+                  分类 <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
                   value={resourceForm.category}
                   onChange={(e) => setResourceForm(prev => ({ ...prev, category: e.target.value }))}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                   placeholder="如：技术、生活"
                   required
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-white/90 mb-2">
                   预估时长（分钟）
                 </label>
                 <div className="relative">
@@ -375,11 +375,11 @@ const AddPage = () => {
                     type="number"
                     value={resourceForm.estimatedReadTime}
                     onChange={(e) => setResourceForm(prev => ({ ...prev, estimatedReadTime: e.target.value }))}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                     placeholder="30"
                     min="1"
                   />
-                  <Clock className="absolute right-3 top-2.5 w-4 h-4 text-slate-400 pointer-events-none" />
+                  <Clock className="absolute right-4 top-3.5 w-4 h-4 text-white/60 pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -388,7 +388,7 @@ const AddPage = () => {
         
         {/* 标签输入 */}
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-white/90 mb-2">
             标签
           </label>
           <div className="space-y-3">
@@ -404,15 +404,15 @@ const AddPage = () => {
                       handleAddTag(selectedType);
                     }
                   }}
-                  className="w-full px-3 py-2 pl-10 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 pl-12 glass-button rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                   placeholder="输入标签后按回车"
                 />
-                <Tag className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+                <Tag className="absolute left-4 top-3.5 w-4 h-4 text-white/60" />
               </div>
               <button
                 type="button"
                 onClick={() => handleAddTag(selectedType)}
-                className="px-4 py-2 bg-slate-100 text-slate-700 rounded-md hover:bg-slate-200 transition-colors"
+                className="glass-button px-6 py-3 text-white rounded-xl hover:scale-105 transition-all duration-300"
               >
                 添加
               </button>
@@ -424,13 +424,13 @@ const AddPage = () => {
                 {(selectedType === 'todo' ? todoForm.tags : resourceForm.tags).map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                    className="inline-flex items-center px-4 py-2 glass-button rounded-full text-sm text-white"
                   >
                     {tag}
                     <button
                       type="button"
                       onClick={() => handleRemoveTag(selectedType, tag)}
-                      className="ml-2 text-blue-600 hover:text-blue-800"
+                      className="ml-2 text-white/80 hover:text-white transition-colors"
                     >
                       ×
                     </button>
@@ -442,20 +442,20 @@ const AddPage = () => {
         </div>
         
         {/* 提交按钮 */}
-        <div className="flex items-center justify-end gap-3 pt-6 border-t border-slate-200">
+        <div className="flex items-center justify-end gap-4 pt-6 border-t border-white/20">
           <button
             type="button"
             onClick={() => navigate(-1)}
-            className="px-4 py-2 text-slate-600 hover:text-slate-900 transition-colors"
+            className="glass-button px-6 py-3 text-white/90 hover:text-white rounded-xl transition-all duration-300"
           >
             取消
           </button>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="glass-button flex items-center px-8 py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
           >
-            <Save className="w-4 h-4 mr-2" />
+            <Save className="w-5 h-5 mr-2" />
             {isSubmitting ? '保存中...' : '保存'}
           </button>
         </div>

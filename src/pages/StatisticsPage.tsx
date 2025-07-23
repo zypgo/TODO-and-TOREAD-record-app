@@ -11,23 +11,23 @@ const StatisticsPage = () => {
   const chartData = useMemo(() => {
     // 待办事项状态分布
     const todoStatusData = [
-      { name: '待办', value: stats.todos.pending, color: '#94a3b8' },
-      { name: '进行中', value: stats.todos.inProgress, color: '#3b82f6' },
-      { name: '已完成', value: stats.todos.completed, color: '#10b981' },
+      { name: '待办', value: stats.pendingTodos, color: '#94a3b8' },
+      { name: '进行中', value: stats.inProgressTodos, color: '#3b82f6' },
+      { name: '已完成', value: stats.completedTodos, color: '#10b981' },
     ];
     
     // 阅读资源状态分布
     const resourceStatusData = [
-      { name: '未读', value: stats.resources.unread, color: '#94a3b8' },
-      { name: '阅读中', value: stats.resources.reading, color: '#3b82f6' },
-      { name: '已读', value: stats.resources.completed, color: '#10b981' },
+      { name: '未读', value: stats.unreadResources, color: '#94a3b8' },
+      { name: '阅读中', value: stats.readingResources, color: '#3b82f6' },
+      { name: '已读', value: stats.completedResources, color: '#10b981' },
     ];
     
     // 优先级分布
     const priorityData = [
-      { name: '高', value: stats.todos.highPriority, color: '#ef4444' },
-      { name: '中', value: stats.todos.mediumPriority, color: '#f59e0b' },
-      { name: '低', value: stats.todos.lowPriority, color: '#10b981' },
+      { name: '高', value: todos.filter(t => t.priority === 'high').length, color: '#ef4444' },
+      { name: '中', value: todos.filter(t => t.priority === 'medium').length, color: '#f59e0b' },
+      { name: '低', value: todos.filter(t => t.priority === 'low').length, color: '#10b981' },
     ];
     
     // 资源类型分布
@@ -254,12 +254,12 @@ const StatisticsPage = () => {
     );
   };
   
-  const completionRate = stats.todos.total > 0 
-    ? Math.round((stats.todos.completed / stats.todos.total) * 100)
+  const completionRate = stats.totalTodos > 0 
+    ? Math.round((stats.completedTodos / stats.totalTodos) * 100)
     : 0;
     
-  const readingRate = stats.resources.total > 0
-    ? Math.round((stats.resources.completed / stats.resources.total) * 100)
+  const readingRate = stats.totalResources > 0
+    ? Math.round((stats.completedResources / stats.totalResources) * 100)
     : 0;
   
   return (
@@ -275,7 +275,7 @@ const StatisticsPage = () => {
         <StatCard
           icon={CheckCircle}
           title="总待办事项"
-          value={stats.todos.total}
+          value={stats.totalTodos}
           subtitle={`完成率 ${completionRate}%`}
           color="blue"
         />
@@ -283,7 +283,7 @@ const StatisticsPage = () => {
         <StatCard
           icon={BookOpen}
           title="总阅读资源"
-          value={stats.resources.total}
+          value={stats.totalResources}
           subtitle={`阅读率 ${readingRate}%`}
           color="green"
         />
@@ -291,7 +291,7 @@ const StatisticsPage = () => {
         <StatCard
           icon={Target}
           title="进行中任务"
-          value={stats.todos.inProgress}
+          value={stats.inProgressTodos}
           subtitle="当前活跃任务"
           color="yellow"
         />
@@ -299,7 +299,7 @@ const StatisticsPage = () => {
         <StatCard
           icon={Activity}
           title="阅读中资源"
-          value={stats.resources.reading}
+          value={stats.readingResources}
           subtitle="当前阅读中"
           color="purple"
         />
@@ -364,31 +364,31 @@ const StatisticsPage = () => {
             <div className="space-y-3">
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">总数</span>
-                <span className="font-medium text-slate-900">{stats.todos.total}</span>
+                <span className="font-medium text-slate-900">{stats.totalTodos}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">已完成</span>
-                <span className="font-medium text-green-600">{stats.todos.completed}</span>
+                <span className="font-medium text-green-600">{stats.completedTodos}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">进行中</span>
-                <span className="font-medium text-blue-600">{stats.todos.inProgress}</span>
+                <span className="font-medium text-blue-600">{stats.inProgressTodos}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">待办</span>
-                <span className="font-medium text-slate-600">{stats.todos.pending}</span>
+                <span className="font-medium text-slate-600">{stats.pendingTodos}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">高优先级</span>
-                <span className="font-medium text-red-600">{stats.todos.highPriority}</span>
+                <span className="font-medium text-red-600">{todos.filter(t => t.priority === 'high').length}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">中优先级</span>
-                <span className="font-medium text-yellow-600">{stats.todos.mediumPriority}</span>
+                <span className="font-medium text-yellow-600">{todos.filter(t => t.priority === 'medium').length}</span>
               </div>
               <div className="flex justify-between items-center py-2">
                 <span className="text-slate-600">低优先级</span>
-                <span className="font-medium text-green-600">{stats.todos.lowPriority}</span>
+                <span className="font-medium text-green-600">{todos.filter(t => t.priority === 'low').length}</span>
               </div>
             </div>
           </div>
@@ -402,19 +402,19 @@ const StatisticsPage = () => {
             <div className="space-y-3">
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">总数</span>
-                <span className="font-medium text-slate-900">{stats.resources.total}</span>
+                <span className="font-medium text-slate-900">{stats.totalResources}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">已读</span>
-                <span className="font-medium text-green-600">{stats.resources.completed}</span>
+                <span className="font-medium text-green-600">{stats.completedResources}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">阅读中</span>
-                <span className="font-medium text-blue-600">{stats.resources.reading}</span>
+                <span className="font-medium text-blue-600">{stats.readingResources}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">未读</span>
-                <span className="font-medium text-slate-600">{stats.resources.unread}</span>
+                <span className="font-medium text-slate-600">{stats.unreadResources}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
                 <span className="text-slate-600">文章</span>

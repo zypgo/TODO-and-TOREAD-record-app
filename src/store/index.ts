@@ -199,28 +199,22 @@ export const useAppStore = create<AppState>()(persist((set, get) => ({
     const { todos, resources } = get();
     const today = new Date().toDateString();
     
+    // 返回符合Statistics接口的数据
     return {
-      todos: {
-        total: todos.length,
-        completed: todos.filter(t => t.status === 'completed').length,
-        pending: todos.filter(t => t.status === 'pending').length,
-        inProgress: todos.filter(t => t.status === 'in-progress').length,
-        highPriority: todos.filter(t => t.priority === 'high').length,
-        mediumPriority: todos.filter(t => t.priority === 'medium').length,
-        lowPriority: todos.filter(t => t.priority === 'low').length,
-        today: todos.filter(t => 
-          t.dueDate && new Date(t.dueDate).toDateString() === today
-        ).length,
-        overdue: todos.filter(t => 
-          t.dueDate && new Date(t.dueDate) < new Date() && t.status !== 'completed'
-        ).length,
-      },
-      resources: {
-        total: resources.length,
-        unread: resources.filter(r => r.status === 'unread').length,
-        reading: resources.filter(r => r.status === 'reading').length,
-        completed: resources.filter(r => r.status === 'completed').length,
-      },
+      totalTodos: todos.length,
+      completedTodos: todos.filter(t => t.status === 'completed').length,
+      pendingTodos: todos.filter(t => t.status === 'pending').length,
+      inProgressTodos: todos.filter(t => t.status === 'in-progress').length,
+      totalResources: resources.length,
+      unreadResources: resources.filter(r => r.status === 'unread').length,
+      readingResources: resources.filter(r => r.status === 'reading').length,
+      completedResources: resources.filter(r => r.status === 'completed').length,
+      todayTasks: todos.filter(t => 
+        t.dueDate && new Date(t.dueDate).toDateString() === today
+      ).length,
+      overdueTasks: todos.filter(t => 
+        t.dueDate && new Date(t.dueDate) < new Date() && t.status !== 'completed'
+      ).length,
     };
   },
   

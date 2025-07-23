@@ -51,138 +51,138 @@ const Home = () => {
   return (
     <div className="space-y-8">
       {/* 欢迎标题 */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">
+      <div className="text-center float-animation">
+        <h1 className="text-4xl font-bold text-white mb-2 gradient-text">
           欢迎回来！
         </h1>
-        <p className="text-slate-600">
+        <p className="text-white/80 text-lg">
           管理您的待办事项和阅读资源，提升工作效率
         </p>
       </div>
 
       {/* 统计概览卡片 */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+        <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-600">待办事项</p>
-              <p className="text-2xl font-bold text-slate-900">{stats.totalTodos}</p>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-sm font-medium text-white/80">待办事项</p>
+              <p className="text-3xl font-bold text-white">{stats.totalTodos}</p>
+              <p className="text-xs text-white/60 mt-1">
                 已完成 {stats.completedTodos} 项
               </p>
             </div>
-            <div className="p-3 bg-blue-100 rounded-full">
-              <CheckSquare className="w-6 h-6 text-blue-600" />
+            <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
+              <CheckSquare className="w-6 h-6 text-white" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+        <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-600">阅读资源</p>
-              <p className="text-2xl font-bold text-slate-900">{stats.totalResources}</p>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-sm font-medium text-white/80">阅读资源</p>
+              <p className="text-3xl font-bold text-white">{stats.totalResources}</p>
+              <p className="text-xs text-white/60 mt-1">
                 已读 {stats.completedResources} 项
               </p>
             </div>
-            <div className="p-3 bg-purple-100 rounded-full">
-              <BookOpen className="w-6 h-6 text-purple-600" />
+            <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
+              <BookOpen className="w-6 h-6 text-white" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+        <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-600">今日任务</p>
-              <p className="text-2xl font-bold text-slate-900">{stats.todayTasks}</p>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-sm font-medium text-white/80">今日任务</p>
+              <p className="text-3xl font-bold text-white">{stats.todayTasks}</p>
+              <p className="text-xs text-white/60 mt-1">
                 进行中 {stats.inProgressTodos} 项
               </p>
             </div>
-            <div className="p-3 bg-green-100 rounded-full">
-              <Clock className="w-6 h-6 text-green-600" />
+            <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
+              <Clock className="w-6 h-6 text-white" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+        <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-600">逾期任务</p>
-              <p className="text-2xl font-bold text-slate-900">{stats.overdueTasks}</p>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-sm font-medium text-white/80">逾期任务</p>
+              <p className="text-3xl font-bold text-white">{stats.overdueTasks}</p>
+              <p className="text-xs text-white/60 mt-1">
                 需要关注
               </p>
             </div>
-            <div className="p-3 bg-red-100 rounded-full">
-              <AlertTriangle className="w-6 h-6 text-red-600" />
+            <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
+              <AlertTriangle className="w-6 h-6 text-white" />
             </div>
           </div>
         </div>
       </div>
 
       {/* 快速操作 */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">快速操作</h2>
+      <div className="glass-card rounded-2xl p-6">
+        <h2 className="text-xl font-bold text-white mb-6 gradient-text">快速操作</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Link
             to="/add/todo"
-            className="flex items-center justify-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border-2 border-dashed border-blue-200 hover:border-blue-300 transition-colors group"
+            className="glass-button flex items-center justify-center p-6 rounded-2xl border-2 border-dashed border-white/30 hover:border-white/50 transition-all duration-300 group hover:scale-105"
           >
             <div className="text-center">
-              <Plus className="w-8 h-8 text-blue-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-              <p className="text-sm font-medium text-blue-700">添加待办</p>
+              <Plus className="w-10 h-10 text-white mx-auto mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-medium text-white">添加待办</p>
             </div>
           </Link>
           
           <Link
             to="/add/resource"
-            className="flex items-center justify-center p-4 bg-purple-50 hover:bg-purple-100 rounded-lg border-2 border-dashed border-purple-200 hover:border-purple-300 transition-colors group"
+            className="glass-button flex items-center justify-center p-6 rounded-2xl border-2 border-dashed border-white/30 hover:border-white/50 transition-all duration-300 group hover:scale-105"
           >
             <div className="text-center">
-              <Plus className="w-8 h-8 text-purple-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-              <p className="text-sm font-medium text-purple-700">添加资源</p>
+              <Plus className="w-10 h-10 text-white mx-auto mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-medium text-white">添加资源</p>
             </div>
           </Link>
           
           <Link
             to="/todos"
-            className="flex items-center justify-center p-4 bg-green-50 hover:bg-green-100 rounded-lg border-2 border-dashed border-green-200 hover:border-green-300 transition-colors group"
+            className="glass-button flex items-center justify-center p-6 rounded-2xl border-2 border-dashed border-white/30 hover:border-white/50 transition-all duration-300 group hover:scale-105"
           >
             <div className="text-center">
-              <CheckSquare className="w-8 h-8 text-green-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-              <p className="text-sm font-medium text-green-700">管理待办</p>
+              <CheckSquare className="w-10 h-10 text-white mx-auto mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-medium text-white">管理待办</p>
             </div>
           </Link>
           
           <Link
             to="/statistics"
-            className="flex items-center justify-center p-4 bg-orange-50 hover:bg-orange-100 rounded-lg border-2 border-dashed border-orange-200 hover:border-orange-300 transition-colors group"
+            className="glass-button flex items-center justify-center p-6 rounded-2xl border-2 border-dashed border-white/30 hover:border-white/50 transition-all duration-300 group hover:scale-105"
           >
             <div className="text-center">
-              <TrendingUp className="w-8 h-8 text-orange-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-              <p className="text-sm font-medium text-orange-700">查看统计</p>
+              <TrendingUp className="w-10 h-10 text-white mx-auto mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-medium text-white">查看统计</p>
             </div>
           </Link>
         </div>
       </div>
 
       {/* 最近活动 */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">最近活动</h2>
+      <div className="glass-card rounded-2xl p-6">
+        <h2 className="text-xl font-bold text-white mb-6 gradient-text">最近活动</h2>
         {recentActivities.length > 0 ? (
           <div className="space-y-3">
             {recentActivities.map((activity) => (
-              <div key={activity.id} className="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+              <div key={activity.id} className="flex items-center space-x-3 p-4 glass-button rounded-xl hover:scale-102 transition-all duration-300">
                 {getActivityIcon(activity.type, activity.action)}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-slate-900">
+                  <p className="text-sm text-white">
                     {getActionText(activity.action)}
                     <span className="font-medium"> {activity.itemTitle}</span>
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-white/60">
                     {formatTimeAgo(activity.timestamp)}
                   </p>
                 </div>
@@ -191,9 +191,9 @@ const Home = () => {
           </div>
         ) : (
           <div className="text-center py-8">
-            <Clock className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-            <p className="text-slate-500">暂无活动记录</p>
-            <p className="text-sm text-slate-400 mt-1">开始添加待办事项或阅读资源吧！</p>
+            <Clock className="w-12 h-12 text-white/50 mx-auto mb-3" />
+            <p className="text-white/70">暂无活动记录</p>
+            <p className="text-sm text-white/50 mt-1">开始添加待办事项或阅读资源吧！</p>
           </div>
         )}
       </div>
